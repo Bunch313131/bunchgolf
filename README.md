@@ -2,7 +2,7 @@
 
 Arcade-but-real golf on the front nine of **El Macero Country Club** — hole shapes, bunkers, the island-green 7th, and real scorecard yardages (par 36, 3,503 yds from the blues).
 
-**Play it:** https://bunch313131.github.io/BunchGolf/
+**Play it:** https://bunch313131.github.io/bunchgolf/
 
 📱 On iPhone: open the link in Safari → Share → **Add to Home Screen** for the full-screen app with icon.
 
