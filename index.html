@@ -55,6 +55,21 @@ canvas{display:block}
   #windTxt b{font-size:16px}
   #puttDist{font-size:32px}
   #puttBreak{font-size:14px;padding:6px 14px}
+  /* compact title screen: everything on one phone screen, no scrolling */
+  .logo{font-size:clamp(38px,11.5vw,58px)}
+  .sub{font-size:11.5px;margin-top:6px}
+  .ovInner{padding:6px}
+  .card{padding:13px 14px;margin-top:11px}
+  .chip{padding:6px 12px;font-size:12px}
+  #chipRow{gap:6px;margin-top:8px}
+  #nameInput{font-size:14px;padding:8px}
+  #golferRow{gap:10px;margin-top:8px}
+  #golferCv{width:80px;height:90px}
+  .dchip{padding:6px 11px;font-size:12px}
+  #diffDesc{font-size:10px;margin-top:5px}
+  #bestLine{margin-top:8px;font-size:11px}
+  .bigBtn{font-size:19px;padding:10px 34px;margin-top:11px}
+  .tiny{margin-top:8px;font-size:10px}
 }
 .iconBtn{pointer-events:auto;background:var(--glass);border:1px solid rgba(255,255,255,.14);
   color:#fff;width:34px;height:34px;border-radius:999px;font-size:15px;cursor:pointer;
@@ -139,21 +154,25 @@ canvas{display:block}
 .chip.sel{background:var(--gold);color:var(--ink);border-color:var(--gold)}
 #bestLine{margin-top:12px;font-size:13px;font-weight:800;opacity:.85}
 .tiny{margin-top:14px;font-size:11px;opacity:.55;font-weight:700}
-#golferCv{width:110px;height:120px;margin-top:4px}
-#modelRow{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:2px}
-#modelName{font-weight:900;font-size:15px;min-width:130px;color:var(--gold)}
+#golferRow{display:flex;align-items:center;gap:12px;margin-top:10px;justify-content:center}
+#golferCv{width:92px;height:104px;flex:0 0 auto}
+#golferCtl{flex:1;min-width:0;max-width:230px;display:flex;flex-direction:column;gap:7px}
+#modelRow{display:flex;align-items:center;justify-content:center;gap:8px}
+#modelName{font-weight:900;font-size:13px;flex:1;color:var(--gold);white-space:nowrap}
 .mBtn{background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.3);color:#fff;
-  width:34px;height:34px;border-radius:999px;font-size:14px;cursor:pointer;font-weight:900}
+  width:28px;height:28px;border-radius:999px;font-size:12px;cursor:pointer;font-weight:900;flex:0 0 auto}
 .mBtn:active{transform:scale(.92)}
 .swLbl{font-size:10px;font-weight:900;opacity:.6;margin-top:9px;letter-spacing:1.2px}
-.swRow{display:flex;gap:7px;justify-content:center;margin-top:5px;flex-wrap:wrap}
-.sw{width:23px;height:23px;border-radius:50%;border:2px solid rgba(255,255,255,.25);cursor:pointer;transition:transform .12s}
-.sw.sel{border-color:var(--gold);transform:scale(1.2);box-shadow:0 0 8px rgba(255,213,74,.5)}
+.swLine{display:flex;align-items:center;gap:8px}
+.swLine>span{font-size:9px;font-weight:900;opacity:.55;letter-spacing:.8px;width:36px;text-align:right;flex:0 0 auto}
+.swRow{display:flex;gap:6px;justify-content:flex-start}
+.sw{width:19px;height:19px;border-radius:50%;border:2px solid rgba(255,255,255,.25);cursor:pointer;transition:transform .12s;flex:0 0 auto}
+.sw.sel{border-color:var(--gold);transform:scale(1.18);box-shadow:0 0 8px rgba(255,213,74,.5)}
 #diffRow{display:flex;gap:8px;justify-content:center;margin-top:7px}
 .dchip{background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.28);color:#fff;
   border-radius:999px;padding:7px 14px;font-weight:800;cursor:pointer;font-size:13px}
 .dchip.sel{background:var(--lime);color:var(--ink);border-color:var(--lime)}
-#diffDesc{font-size:11px;font-weight:700;opacity:.7;margin-top:8px;line-height:1.45;min-height:28px}
+#diffDesc{font-size:11px;font-weight:700;opacity:.7;margin-top:6px;line-height:1.4}
 
 /* hole intro */
 #intHole{font-family:'Lilita One';font-size:46px;color:var(--gold);text-shadow:0 3px 12px rgba(0,0,0,.5)}
@@ -232,18 +251,21 @@ h3.cardTitle{font-family:'Lilita One';letter-spacing:1px;font-size:22px;color:#f
       <div id="chipRow"></div>
       <div style="margin-top:10px"><input id="nameInput" maxlength="12" placeholder="or type a name…" autocomplete="off"></div>
       <div id="golferSec">
-        <div style="font-weight:900;font-size:12px;letter-spacing:1px;opacity:.8;margin-top:16px">YOUR GOLFER</div>
-        <canvas id="golferCv" width="220" height="240"></canvas>
-        <div id="modelRow">
-          <button class="mBtn" id="modelL">◀</button>
-          <span id="modelName">Tour Pro</span>
-          <button class="mBtn" id="modelR">▶</button>
+        <div id="golferRow">
+          <canvas id="golferCv" width="220" height="240"></canvas>
+          <div id="golferCtl">
+            <div id="modelRow">
+              <button class="mBtn" id="modelL">◀</button>
+              <span id="modelName">Tour Pro</span>
+              <button class="mBtn" id="modelR">▶</button>
+            </div>
+            <div class="swLine"><span>SKIN</span><div class="swRow" id="skinRow"></div></div>
+            <div class="swLine"><span>SHIRT</span><div class="swRow" id="shirtRow"></div></div>
+            <div class="swLine"><span>PANTS</span><div class="swRow" id="pantsRow"></div></div>
+          </div>
         </div>
-        <div class="swLbl">SKIN</div><div class="swRow" id="skinRow"></div>
-        <div class="swLbl">SHIRT</div><div class="swRow" id="shirtRow"></div>
-        <div class="swLbl">PANTS</div><div class="swRow" id="pantsRow"></div>
       </div>
-      <div class="swLbl" style="margin-top:16px">DIFFICULTY</div>
+      <div class="swLbl" style="margin-top:12px">DIFFICULTY</div>
       <div id="diffRow"></div>
       <div id="diffDesc"></div>
       <div id="bestLine"></div>
@@ -373,18 +395,23 @@ const GOLFER_MODELS=[
  {nm:'Weekend Hack',hat:'bucket',build:1.12,shorts:true},
 ];
 const SKINS=['#f6cfa8','#e3b183','#c68a52','#8d5a2f','#5d3a1e'];
-const KIT=['#e74c3c','#3b82f6','#22c55e','#eab308','#a855f7','#14b8a6','#f97316','#f1f5f9','#1e293b','#ec4899'];
-let GOLFER={model:0,skin:1,shirt:1,pants:8};
-try{const g=JSON.parse(localStorage.bgGolfer||'null');if(g&&GOLFER_MODELS[g.model]!==undefined&&KIT[g.shirt])GOLFER=g}catch(e){}
+const SHIRT_COLS=['#e74c3c','#3b82f6','#22c55e','#eab308','#f1f5f9','#1e293b'];
+const PANT_COLS=['#1e293b','#f1f5f9','#c9b98a','#64748b','#26303a'];
+let GOLFER={model:0,skin:1,shirt:1,pants:0};
+try{const g=JSON.parse(localStorage.bgGolfer||'null');
+  if(g&&GOLFER_MODELS[g.model]!==undefined){GOLFER=g;
+    if(!SKINS[GOLFER.skin])GOLFER.skin=1;
+    if(!SHIRT_COLS[GOLFER.shirt])GOLFER.shirt=1;
+    if(!PANT_COLS[GOLFER.pants])GOLFER.pants=0;}}catch(e){}
 function saveGolfer(){localStorage.bgGolfer=JSON.stringify(GOLFER)}
 
 // ---------- difficulty ----------
 const DIFFS=[
- {nm:'Resort',desc:'Forgiving: gentle wind, soft greens, and the aim line corrects for wind.',
+ {nm:'Resort',desc:'Gentle wind, soft greens, wind-corrected aim.',
   disp:.6,wind:.7,windAim:true,firm:0,putt:.6,trunc:1},
- {nm:'Member',desc:'Honest golf: the aim line shows a CALM-AIR shot — judging the wind is on you.',
+ {nm:'Member',desc:'The aim line ignores wind — you judge it.',
   disp:1,wind:1,windAim:false,firm:1,putt:1,trunc:1},
- {nm:'Tour',desc:'Firm greens, heavy wind, bigger misses, and only a partial ball-flight read.',
+ {nm:'Tour',desc:'Heavy wind, firm greens, partial read.',
   disp:1.35,wind:1.25,windAim:false,firm:1.25,putt:1.3,trunc:.55},
 ];
 let DIFF_IDX=clamp(parseInt(localStorage.bgDiff??'1',10)||0,0,2);
@@ -703,7 +730,7 @@ function drawBall(bx,by,bz,trail){
 // sweeping flat over the head.
 function drawGolfer(c,fx,fy,hp,pose){
   const m=GOLFER_MODELS[GOLFER.model],skin=SKINS[GOLFER.skin],
-        shirt=KIT[GOLFER.shirt],pants=KIT[GOLFER.pants];
+        shirt=SHIRT_COLS[GOLFER.shirt],pants=PANT_COLS[GOLFER.pants];
   const u=hp,bw=Math.max(3,.17*u*m.build);
   c.save();c.lineCap='round';
   // shadow
@@ -740,7 +767,7 @@ function drawGolfer(c,fx,fy,hp,pose){
     c.lineTo(mx-.038*u,my);c.closePath();c.fill()}
   // head: eyes down on the ball, lid brim pointing at it
   c.fillStyle=skin;c.beginPath();c.arc(headX,headY,.078*u,0,TAU);c.fill();
-  const hatC=GOLFER.shirt===7?KIT[8]:'#f8fafc';
+  const hatC=shirt==='#f1f5f9'?'#1e293b':'#f8fafc';
   if(m.hat==='cap'){c.fillStyle=hatC;
     c.beginPath();c.arc(headX,headY-.02*u,.082*u,Math.PI,0);c.fill();
     c.fillRect(headX+.01*u,headY-.04*u,.105*u,.022*u)}
@@ -1668,7 +1695,7 @@ function buildGolferUI(){
     arr.forEach((col,i)=>{const d=document.createElement('div');
       d.className='sw'+(GOLFER[key]===i?' sel':'');d.style.background=col;
       d.onclick=()=>{GOLFER[key]=i;saveGolfer();buildGolferUI()};row.appendChild(d)})};
-  mk('skinRow',SKINS,'skin');mk('shirtRow',KIT,'shirt');mk('pantsRow',KIT,'pants');
+  mk('skinRow',SKINS,'skin');mk('shirtRow',SHIRT_COLS,'shirt');mk('pantsRow',PANT_COLS,'pants');
 }
 $('modelL').onclick=()=>{GOLFER.model=(GOLFER.model+GOLFER_MODELS.length-1)%GOLFER_MODELS.length;saveGolfer();buildGolferUI()};
 $('modelR').onclick=()=>{GOLFER.model=(GOLFER.model+1)%GOLFER_MODELS.length;saveGolfer();buildGolferUI()};
